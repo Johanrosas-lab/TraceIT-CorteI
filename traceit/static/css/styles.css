@@ -1,0 +1,11 @@
+body { background: #f7f8fa; color: #1f2937; }
+.navbar-brand { color: #193a63; letter-spacing: .2px; }
+.btn-primary { background-color: #245b8a; border-color: #245b8a; }
+.btn-primary:hover { background-color: #1c4a72; border-color: #1c4a72; }
+.card { border-radius: .7rem; }
+.table thead th { background: #eef3f7; color: #334155; font-size: .84rem; }
+.status { display: inline-block; border-radius: 999px; padding: .28rem .62rem; font-size: .78rem; font-weight: 600; }
+.status-abierto { background: #e8f1fb; color: #245b8a; }
+.status-en-proceso { background: #fff4d7; color: #7a5a00; }
+.status-resuelto { background: #e9f7ef; color: #24663d; }
+.preserve-lines { white-space: pre-line; }

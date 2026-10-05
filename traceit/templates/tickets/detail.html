@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Ticket #{{ ticket.id }} | TraceIT{% endblock %}
+{% block content %}
+<a href="{{ url_for('tickets.index') }}" class="text-decoration-none">← Volver a tickets</a>
+<div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mt-3 mb-4">
+  <div>
+    <p class="text-secondary mb-1">Ticket #{{ ticket.id }}</p>
+    <h1 class="h3 mb-2">{{ ticket.title }}</h1>
+    <span class="status status-{{ ticket.status|lower|replace(' ', '-') }}">{{ ticket.status }}</span>
+  </div>
+  <a class="btn btn-outline-primary" href="{{ url_for('tickets.edit', ticket_id=ticket.id) }}">Editar</a>
+</div>
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div class="card shadow-sm border-0 p-4">
+      <h2 class="h5">Descripción</h2>
+      <p class="mb-0 preserve-lines">{{ ticket.description }}</p>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card shadow-sm border-0 p-4">
+      <dl class="row mb-0 small">
+        <dt class="col-5">Usuario</dt><dd class="col-7">{{ ticket.user.name }}</dd>
+        <dt class="col-5">Categoría</dt><dd class="col-7">{{ ticket.category.name }}</dd>
+        <dt class="col-5">Prioridad</dt><dd class="col-7">{{ ticket.priority }}</dd>
+        <dt class="col-5">Creado</dt><dd class="col-7">{{ ticket.created_at.strftime('%d/%m/%Y %H:%M') }}</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+<form method="post" action="{{ url_for('tickets.delete', ticket_id=ticket.id) }}" class="mt-4" onsubmit="return confirm('¿Eliminar este ticket?');">
+  <button class="btn btn-outline-danger" type="submit">Eliminar ticket</button>
+</form>
+{% endblock %}
