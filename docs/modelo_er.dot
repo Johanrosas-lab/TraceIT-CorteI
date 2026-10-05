@@ -1,0 +1,12 @@
+digraph ER {
+  graph [rankdir=LR, bgcolor="white", pad=0.25, nodesep=0.7, ranksep=0.8];
+  node [shape=record, fontname="Arial", fontsize=11, color="#264b73", penwidth=1.2];
+  edge [fontname="Arial", fontsize=10, color="#555555", arrowsize=0.7];
+
+  Usuario [label="{USUARIO|id : INTEGER (PK)\lnombre : VARCHAR(120)\lcorreo : VARCHAR(150) UNIQUE\lrol : VARCHAR(50)\l}"];
+  Categoria [label="{CATEGORIA|id : INTEGER (PK)\lnombre : VARCHAR(80) UNIQUE\ldescripcion : VARCHAR(220)\l}"];
+  Ticket [label="{TICKET|id : INTEGER (PK)\ltitulo : VARCHAR(140)\ldescripcion : TEXT\lprioridad : VARCHAR(20)\lestado : VARCHAR(25)\lfecha_creacion : DATETIME\lfecha_actualizacion : DATETIME\lusuario_id : INTEGER (FK)\lcategoria_id : INTEGER (FK)\l}"];
+
+  Usuario -> Ticket [label="1          N", dir=both, arrowtail=none, arrowhead=crow];
+  Categoria -> Ticket [label="1          N", dir=both, arrowtail=none, arrowhead=crow];
+}
